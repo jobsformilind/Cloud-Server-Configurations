@@ -1,6 +1,9 @@
 @ECHO OFF
 
-for /f %%i in ('call git status -s') do set FILE_FOUND=%%i
+for /f "tokens=*" %%G in ('call git status -s') do (
+	echo %%G
+	set FILE_FOUND="%%G"
+)
 
 IF [%FILE_FOUND%] NEQ [] (
 	ECHO Value NOT Missing - %FILE_FOUND%
